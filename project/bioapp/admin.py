@@ -4,6 +4,6 @@ from . import models
 
 # Register your models here.
 
-admin.site.register(models.escuela)
-admin.site.register(models.alumno)
-admin.site.register(models.materia)
+admin.site.register(models.Escuela)
+admin.site.register(models.Alumno)
+admin.site.register(models.Materia)

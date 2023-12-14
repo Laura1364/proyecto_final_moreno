@@ -16,9 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from bioapp.views import (
+    inicio_view,
+    numero_escuela_view,
+    alumno_crear_view,
+    alumno_buscar_view,
+    materias_view
+)
 
-from . import views 
+app_name = "bioapp"
+
 
 urlpatterns = [
-    path('bioapp/', views.home),
+    path("numero_escuela/",numero_escuela_view, name="numero_escuela"),
+    path("alumno_crear", alumno_crear_view, name="alumno_crear"),
+    path("alumno/buscar",alumno_buscar_view, name="alumno_buscar"),
+    path("materias/", materias_view),
+    path("inicio/", inicio_view, name="inicio"),
 ]

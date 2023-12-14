@@ -1,0 +1,8 @@
+{% extends "bioapp/padre.html" %} {% block contenidoQueCambia %}
+<body style="background-color: green">
+  <form action="/bioapp/alumno/buscar" method="POST">
+    {% csrf_token %} {{ form.as_table }}
+    <input type="submit" value="Guardar" />
+  </form>
+</body>
+{% endblock %}
