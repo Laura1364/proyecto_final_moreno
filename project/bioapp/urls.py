@@ -29,9 +29,9 @@ app_name = "bioapp"
 
 urlpatterns = [
     path("inicio/", inicio_view, name="inicio"),
-    path("numero/escuela/",numero_escuela_view, name="numero_escuela"),
-    path("alumno/crear/", alumno_crear_view, name="alumno_crear"),
-    path("alumno/buscar/",alumno_buscar_view, name="alumno_buscar"),
+    path("numero_escuela/",numero_escuela_view, name="numero_escuela"),
+    path("alumno/crear", alumno_crear_view, name="alumno_crear"),
+    path("alumno/buscar",alumno_buscar_view, name="alumno_buscar"),
     path("materias/", materias_view)
     
 ]

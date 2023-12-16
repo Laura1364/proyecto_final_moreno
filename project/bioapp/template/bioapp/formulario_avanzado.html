@@ -9,7 +9,7 @@
   </head>
 
   <body style="background-color: green">
-    <form action="/bioapp/numero_escuela/" method="POST">
+    <form action="/bioapp/alumno/crear/" method="POST">
       {% csrf_token %} {{ form.as_p }}
       <input type="submit" value="Guardar" />
     </form>

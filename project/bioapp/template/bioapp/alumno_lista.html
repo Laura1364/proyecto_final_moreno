@@ -1,5 +1,5 @@
 {% extends "bioapp/padre.html" %} {% block contenidoQueCambia %} Aquí va la
-lista de materias! {% if alumno %}
+lista de Alumnos! {% if alumno %}
 <ul>
   {% for alumno in alumno %}
   <li>{{ alumno.alumno }} ({{ alumno.materia }})</li>
