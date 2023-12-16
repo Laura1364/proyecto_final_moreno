@@ -5,7 +5,7 @@ from .models import Alumno
 
 
 def inicio_view(request):
-    return render(request, "bioapp/inicio.html")
+    return render(request, "bioapp/inicio2.html")
 
 
 def numero_escuela_view(xx):
