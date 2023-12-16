@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .forms import AlumnoFormulario, AlumnoBuscarFormulario
-from .models import Escuela
+
 from .models import Alumno
 
 
 def inicio_view(request):
-    return render(request, "bioapp/inicio2.html")
+    return render(request, "bioapp/inicio.html")
 
 
 def numero_escuela_view(xx):
@@ -20,17 +20,22 @@ def numero_escuela_view(xx):
 
 def alumno_crear_view(request):
     if request.method == "GET":
-        contexto ={"form":AlumnoFormulario()}
-        return render(request,"bioapp/formulario_avanzado.html, context = contexto")
+        print("+" * 90) #  Imprimimos esto para ver por consola
+        print("+" * 90) #  Imprimimos esto para ver por consola
+        form = AlumnoFormulario()
+        return render(
+            request,
+            "AppCoder/curso_formulario_avanzado.html",
+            context={"form": form}
+        )
     else:
-        print(request.POST)
         formulario = AlumnoFormulario(request.POST)
         if formulario.is_valid():
-            informacion_nueva = formulario.cleaned_data
-            modelo = Alumno (alumno = informacion_nueva["alumno"])
+            informacion = formulario.cleaned_data
+            modelo = Alumno(alumno=informacion["alumno"], camada=informacion["camada"])
             modelo.save()
-            return render(request, "bioapp/index.html")
-        
+
+        return redirect("bioapp:inicio")
 
 
 def alumno_buscar_view(request):
@@ -47,7 +52,7 @@ def alumno_buscar_view(request):
             informacion = formulario.cleaned_data
             alumnos_lista = []
             for alumno in Alumno.objects.filter(curso=informacion["curso"]):
-                alumnos_lista.append(Alumno)
+                alumnos_lista.append(alumno)
 
             contexto = {"cursos": alumnos_lista}
             return render(request, "bioapp/cursos_list.html", contexto)

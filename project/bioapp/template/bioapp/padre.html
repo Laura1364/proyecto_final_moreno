@@ -28,18 +28,26 @@
     <link href="{% static 'bioapp/css/styles.css'  %}" rel="stylesheet" />
   </head>
   <body>
-    <!-- Navigation-->
+    #<!-- Navigation-->
+    #
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="/bioapp/inicio/">Inicio</a>
-        <a class="navbar-brand" href="{% url 'bioappr:inicio' %}"
+        <a class="navbar-brand" href="{% url 'bioapp:inicio' %}"
           >Inicio (by name)</a
         >
-        <a class="navbar-brand" href="/bioapp/cursos/">Cursos</a>
-        <a class="navbar-brand" href="{% url 'bioapp:cursos' %}"
-          >Cursos (by name)</a
+        <a class="navbar-brand" href="/bioapp/alumnos/crear/"
+          >Lista de alumnos</a
         >
-        <a class="navbar-brand" href="/bioapp/cursos/todos">Todos los cursos</a>
+        <a class="navbar-brand" href="{% url 'bioapp:alumnos' %}"
+          >Alumnos (by name)</a
+        >
+        <a class="navbar-brand" href="/bioapp/materias">Todas las materias</a>
+        <a class="navbar-brand" href="{% url 'bioapp:materias' %}"> Materias</a>
+        <a class="navbar-brand" href="/bioapp/numero/escuela"
+          >Todas las escuelas</a
+        >
+        <a class="navbar-brand" href="{% url 'bioapp:materias' %}">Escuelas</a>
       </div>
     </nav>
     <!-- Masthead-->
