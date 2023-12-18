@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from .forms import AlumnoFormulario, AlumnoBuscarFormulario
-
+from . import models
 from .models import Alumno
 
 
