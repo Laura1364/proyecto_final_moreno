@@ -24,7 +24,7 @@ from bioapp.views import (
     materias_view
 )
 
-app_name = "bioapp"
+
 
 
 urlpatterns = [

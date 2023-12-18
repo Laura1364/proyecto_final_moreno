@@ -4,7 +4,7 @@ from . import models
 from .models import Alumno
 
 
-def inicio_view(request):
+def inicio_view (request):
     return render(request, "bioapp/inicio.html")
 
 
@@ -25,7 +25,7 @@ def alumno_crear_view(request):
         form = AlumnoFormulario()
         return render(
             request,
-            "AppCoder/curso_formulario_avanzado.html",
+            "bioapp/formulario_avanzado.html",
             context={"form": form}
         )
     else:
