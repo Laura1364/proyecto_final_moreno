@@ -25,24 +25,25 @@
       type="text/css"
     />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{% static 'bioapp/style.css'  %}" rel="stylesheet" />
+    <link href="{% static 'bioapp/css/styles.css'  %}" rel="stylesheet" />
   </head>
   <body>
-    #<!-- Navigation-->
-    #
+    <!-- Navigation-->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="/bioapp/inicio/">Inicio</a>
-        <a class="navbar-brand" href="{% url 'bioapp:inicio' %}"
-          >Inicio (by name)</a
-        >
-        <a class="navbar-brand" href="/bioapp/alumno/crear/"
+        <a
+          class="navbar-brand"
+          href="{% url 'bioapp:inicio' %}"
+          <a
+          class="navbar-brand"
+          href="/bioapp/alumno/crear"
           >Lista de alumnos</a
         >
-        <a class="navbar-brand" href="{% url 'bioapp:alumno' %}"
+        <a class="navbar-brand" href="{% url 'bioapp:alumno/crear' %}"
           >Alumnos (by name)</a
         >
-        <a class="navbar-brand" href="/bioapp/materias">Todas las materias</a>
+        <a class="navbar-brand" href="/bioapp/materias/">Todas las materias</a>
         <a class="navbar-brand" href="{% url 'bioapp:materias' %}"> Materias</a>
         <a class="navbar-brand" href="/bioapp/numero_escuela"
           >Todas las escuelas</a
