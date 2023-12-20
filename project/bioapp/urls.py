@@ -32,5 +32,5 @@ urlpatterns = [
     path("alumno/crear", alumno_crear_view, name="alumno_crear"),
     path("alumno/buscar",alumno_buscar_view, name="alumno_buscar"),
     path("materias/", materias_view, name="materias"),
-    path("inicio/", inicio_view, name="inicio"),
+    path("inicio/", inicio_view, name="inicio")
 ]
