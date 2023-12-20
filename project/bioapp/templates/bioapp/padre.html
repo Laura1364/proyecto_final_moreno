@@ -37,17 +37,15 @@
           href="{% url 'bioapp:inicio' %}"
           <a
           class="navbar-brand"
-          href="/bioapp/alumno/crear"
+          href="/bioapp/alumno_crear/"
           >Lista de alumnos</a
         >
-        <a class="navbar-brand" href="{% url 'bioapp:alumno/crear' %}"
-          >Alumnos (by name)</a
-        >
-        <a class="navbar-brand" href="/bioapp/materias/">Todas las materias</a>
+        <a class="navbar-brand" href="{% url 'bioapp:alumno_crear' %}">
+          Alumnos
+        <a class="navbar-brand" href="{% url 'bioapp:alumno_buscar' %}">
+          Buscar Alumnos
+        </a>
         <a class="navbar-brand" href="{% url 'bioapp:materias' %}"> Materias</a>
-        <a class="navbar-brand" href="/bioapp/numero_escuela"
-          >Todas las escuelas</a
-        >
         <a class="navbar-brand" href="{% url 'bioapp:numero_escuela' %}"
           >Escuela</a
         >

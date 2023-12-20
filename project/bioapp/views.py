@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render
-from .forms import AlumnoFormulario, AlumnoBuscarFormulario
-from . import models
+from .forms import AlumnoFormulario, AlumnoBuscarFormulario, MateriaFormulario
 from .models import Alumno
 
 
@@ -8,14 +7,14 @@ def inicio_view (request):
     return render(request, "bioapp/inicio.html")
 
 
-def numero_escuela_view(xx):
+def numero_escuela_view(request):
     numero = "123"
     nombre = "Malvinas"
     diccionario = {
         'numero': numero,
         'nombre': nombre,
          } 
-    return render(xx, "bioapp/padre.html", diccionario)     
+    return render(request, "bioapp/padre.html", diccionario)     
 
 
 def alumno_crear_view(request):
@@ -50,23 +49,32 @@ def alumno_buscar_view(request):
         formulario = AlumnoBuscarFormulario(request.POST)
         if formulario.is_valid():
             informacion = formulario.cleaned_data
-            alumnos_lista = []
-            for alumno in Alumno.objects.filter(curso=informacion["curso"]):
-                alumnos_lista.append(alumno)
+            alumno_lista = []
+            for alumno in Alumno.objects.filter(nota=informacion["nota"]):
+                alumno_lista.append(alumno)
 
-            contexto = {"cursos": alumnos_lista}
-            return render(request, "bioapp/cursos_list.html", contexto)
+            contexto = {"not": alumno_lista}
+            return render(request, "bioapp/alumno_lista.html", contexto)
 
 
 def materias_view(request):
-    materias = []
-    for materias in materias.objects.all():
-        materias.append(materias)
+    if request.method == "GET":
+        print("+" * 90) #  Imprimimos esto para ver por consola
+        print("+" * 90) #  Imprimimos esto para ver por consola
+        form = MateriaFormulario()
+        return render(
+            request,
+            "bioapp/formulario_avanzado.html",
+            context={"form": form}
+        )
+    else:
+        formulario = MateriaFormulario(request.POST)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            modelo = Alumno(alumno=informacion["alumno"], camada=informacion["camada"])
+            modelo.save()
 
-    contexto = {"materias": materias}
-    return render(request, "bioapp/alumnos_list.html", contexto)
-
-
+        return redirect("bioapp:inicio")
 
 
 

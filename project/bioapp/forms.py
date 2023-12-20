@@ -8,6 +8,8 @@ class AlumnoFormulario(forms.Form):
 class AlumnoBuscarFormulario(forms.Form):
     apellido = forms.CharField(max_length=50)
     
-
+class MateriaFormulario(forms.Form):
+    materia = forms.CharField(max_length=100)
+    nota = forms.CharField(max_length=100)
 
 

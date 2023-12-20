@@ -8,7 +8,7 @@
     <title>Formulario</title>
   </head>
 
-  <body style="background-color: green">
+  <body style="background-color: rgb(47, 44, 85)">
     <form action="/bioapp/alumno/crear/" method="POST">
       {% csrf_token %} {{ form.as_p }}
       <input type="submit" value="Guardar" />
