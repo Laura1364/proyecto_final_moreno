@@ -1,20 +1,23 @@
 from django.shortcuts import redirect, render
 from .forms import AlumnoFormulario, AlumnoBuscarFormulario, MateriaFormulario
-from .models import Alumno
+from .models import Alumno, Materia
 
 
 def inicio_view (request):
     return render(request, "bioapp/inicio.html")
 
 
-def numero_escuela_view(request):
-    numero = "123"
-    nombre = "Malvinas"
+def profesor_view(xx):
+    nombre = "Laura"
+    apellido = "Moreno"
     diccionario = {
-        'numero': numero,
         'nombre': nombre,
-         } 
-    return render(request, "bioapp/padre.html", diccionario)     
+        'apellido': apellido,
+        "materias_titular": ["Quimica", "Biologia", "Microbiologia"]
+    } 
+    return render(xx, "bioapp/padre.html", diccionario)
+    
+     
 
 
 def alumno_crear_view(request):
@@ -31,7 +34,7 @@ def alumno_crear_view(request):
         formulario = AlumnoFormulario(request.POST)
         if formulario.is_valid():
             informacion = formulario.cleaned_data
-            modelo = Alumno(alumno=informacion["alumno"], camada=informacion["camada"])
+            modelo = Alumno(nombre=informacion["nombre"], apellido=informacion["apellido"], mail=informacion["mail"] )
             modelo.save()
 
         return redirect("bioapp:inicio")
@@ -50,7 +53,7 @@ def alumno_buscar_view(request):
         if formulario.is_valid():
             informacion = formulario.cleaned_data
             alumno_lista = []
-            for alumno in Alumno.objects.filter(nota=informacion["nota"]):
+            for alumno in Alumno.objects.filter(apellido=informacion["apellido"]):
                 alumno_lista.append(alumno)
 
             contexto = {"not": alumno_lista}
@@ -71,7 +74,7 @@ def materias_view(request):
         formulario = MateriaFormulario(request.POST)
         if formulario.is_valid():
             informacion = formulario.cleaned_data
-            modelo = Alumno(alumno=informacion["alumno"], camada=informacion["camada"])
+            modelo = Materia (materia=informacion["materia"], codigo=informacion["codigo"])
             modelo.save()
 
         return redirect("bioapp:inicio")

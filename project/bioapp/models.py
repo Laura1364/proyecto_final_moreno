@@ -1,10 +1,9 @@
 from django.db import models
 
-class Escuela (models.Model):
-    escuela = models.CharField(max_length=100)
-    
-    def __str__(self):
-        return f"{self.escuela}"
+class Profesor(models.Model):
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=100)
+      
  
 
 class Alumno (models.Model):
@@ -19,7 +18,7 @@ class Alumno (models.Model):
     
 class Materia (models.Model):
     materia = models.CharField(max_length=100)
-    nota = models.DecimalField(max_digits=5, decimal_places=2)
+    codigo = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return f"{self.materia} ({self.nota})"
+        return f"{self.materia} ({self.codigo})"

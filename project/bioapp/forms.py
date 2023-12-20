@@ -10,6 +10,9 @@ class AlumnoBuscarFormulario(forms.Form):
     
 class MateriaFormulario(forms.Form):
     materia = forms.CharField(max_length=100)
-    nota = forms.CharField(max_length=100)
+    codigo = forms.CharField(max_length=100)
 
-
+class ProfesorFormulario(forms.Form):
+    nombre = forms.CharField()
+    apellido = forms.CharField()
+    materia_que_da = forms.CharField()

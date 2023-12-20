@@ -2,7 +2,7 @@
 lista de Alumnos! {% if alumno %}
 <ul>
   {% for alumno in alumno %}
-  <li>{{ alumno.alumno }} ({{ alumno.materia }})</li>
+  <li>{{ alumno.apellido }} ({{ alumno.mail }})</li>
   {% endfor %}
 </ul>
 {% endif %} {% endblock %}

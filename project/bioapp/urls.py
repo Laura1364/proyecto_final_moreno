@@ -18,7 +18,7 @@ Including another URLconf
 from django.urls import path
 from bioapp.views import (
     inicio_view,
-    numero_escuela_view,
+    profesor_view,
     alumno_crear_view,
     alumno_buscar_view,
     materias_view
@@ -28,7 +28,7 @@ app_name= "bioapp"
 
 
 urlpatterns = [
-    path("numero_escuela/",numero_escuela_view, name="numero_escuela"),
+    path("profesor/", profesor_view, name= "profesor"),
     path("alumno/crear", alumno_crear_view, name="alumno_crear"),
     path("alumno/buscar",alumno_buscar_view, name="alumno_buscar"),
     path("materias/", materias_view, name="materias"),
