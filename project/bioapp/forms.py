@@ -15,4 +15,4 @@ class MateriaFormulario(forms.Form):
 class ProfesorFormulario(forms.Form):
     nombre = forms.CharField()
     apellido = forms.CharField()
-    materia_que_da = forms.CharField()
+    

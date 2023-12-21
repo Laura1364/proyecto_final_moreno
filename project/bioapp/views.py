@@ -13,7 +13,6 @@ def profesor_view(xx):
     diccionario = {
         'nombre': nombre,
         'apellido': apellido,
-        "materias_titular": ["Quimica", "Biologia", "Microbiologia"]
     } 
     return render(xx, "bioapp/padre.html", diccionario)
     

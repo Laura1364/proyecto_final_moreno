@@ -32,15 +32,11 @@
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="/bioapp/inicio/">Inicio</a>
-        <a
-          class="navbar-brand"
-          href="{% url 'bioapp:inicio' %}"
-          <a
-          class="navbar-brand"
-         
+        <a class="navbar-brand" href="{% url 'bioapp:inicio' %}"></a>
+        <a class="navbar-brand" href="/bioapp/alumno/crear/">Lista Alumnos</a>
+        <a class="navbar-brand" href="{% url 'bioapp:alumno_crear' %}"
+          >Alumnos</a
         >
-        <a class="navbar-brand" href="{% url 'bioapp:alumno_crear' %}">
-          Alumnos
         <a class="navbar-brand" href="{% url 'bioapp:alumno_buscar' %}">
           Buscar Alumnos
         </a>
