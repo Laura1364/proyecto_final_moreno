@@ -7,17 +7,24 @@ def inicio_view (request):
     return render(request, "bioapp/inicio.html")
 
 
-def profesor_view(xx):
-    nombre = "Laura"
-    apellido = "Moreno"
-    diccionario = {
-        'nombre': nombre,
-        'apellido': apellido,
-    } 
-    return render(xx, "bioapp/padre.html", diccionario)
-    
+def profesor_view(request):
+     if request.method == "GET":
+         print("+" * 90) #  Imprimimos esto para ver por consola
+         print("+" * 90) #  Imprimimos esto para ver por consola
+         return render(
+             request,
+             "bioapp/profesor_formulario_basico.html",
+         )
+     else:
+         print("*" * 90)     #  Imprimimos esto para ver por consola
+         print(request.POST) #  Imprimimos esto para ver por consola
+         print("*" * 90)     #  Imprimimos esto para ver por consola
+         return render(
+             request,
+             "bioapp/profesor_formulario_basico.html",
+         )   
      
-
+       
 
 def alumno_crear_view(request):
     if request.method == "GET":
@@ -55,7 +62,7 @@ def alumno_buscar_view(request):
             for alumno in Alumno.objects.filter(apellido=informacion["apellido"]):
                 alumno_lista.append(alumno)
 
-            contexto = {"not": alumno_lista}
+            contexto = {"alumno": alumno_lista}
             return render(request, "bioapp/alumno_lista.html", contexto)
 
 
@@ -66,7 +73,7 @@ def materias_view(request):
         form = MateriaFormulario()
         return render(
             request,
-            "bioapp/formulario_avanzado.html",
+            "bioapp/materia_formulario.html",
             context={"form": form}
         )
     else:
