@@ -13,6 +13,6 @@ class MateriaFormulario(forms.Form):
     codigo = forms.CharField(max_length=100)
 
 class ProfesorFormulario(forms.Form):
-    nombre = forms.CharField()
-    apellido = forms.CharField()
-    
+    nombre = forms.CharField(max_length=30)
+    apellido =forms.CharField(max_length=100)
+    materia= forms.CharField(max_length=100)

@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
-from .forms import AlumnoFormulario, AlumnoBuscarFormulario, MateriaFormulario
-from .models import Alumno, Materia
+from .forms import AlumnoFormulario, AlumnoBuscarFormulario, MateriaFormulario, ProfesorFormulario
+from .models import Alumno, Materia, Profesor
 
 
 def inicio_view (request):
@@ -9,21 +9,21 @@ def inicio_view (request):
 
 def profesor_view(request):
      if request.method == "GET":
-         print("+" * 90) #  Imprimimos esto para ver por consola
-         print("+" * 90) #  Imprimimos esto para ver por consola
-         return render(
-             request,
-             "bioapp/profesor_formulario_basico.html",
-         )
+        profesor_formulario = ProfesorFormulario()
+        return render(
+            request,
+            "bioapp/profesor_formulario_avanzado.html",
+            context={"profesor_formulario": profesor_formulario})
+            
      else:
-         print("*" * 90)     #  Imprimimos esto para ver por consola
-         print(request.POST) #  Imprimimos esto para ver por consola
-         print("*" * 90)     #  Imprimimos esto para ver por consola
-         return render(
-             request,
-             "bioapp/profesor_formulario_basico.html",
-         )   
-     
+         profesor_formulario = ProfesorFormulario(request.POST)
+         
+         if profesor_formulario.is_valid():
+             data = profesor_formulario.cleaned_data
+             modelo = Profesor (nombre=data["nombre"], apellido=data["apellido"], materia=data["materia"]), 
+             modelo.save()
+         return redirect("bioapp:inicio")
+       
        
 
 def alumno_crear_view(request):
