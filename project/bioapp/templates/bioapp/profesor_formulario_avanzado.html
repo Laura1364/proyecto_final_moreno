@@ -10,7 +10,7 @@
 
   <body style="background-color: rgb(187, 155, 155)">
     <form action="/bioapp/profesor/" method="POST">
-      {% csrf_token %} {{ profesor_formulario.as_p }}
+      {% csrf_token %} {{form.as_p }}
       <input type="submit" value="Guardar" />
     </form>
   </body>

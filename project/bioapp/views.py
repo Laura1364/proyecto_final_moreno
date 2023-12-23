@@ -1,29 +1,13 @@
 from django.shortcuts import redirect, render
 from .forms import AlumnoFormulario, AlumnoBuscarFormulario, MateriaFormulario, ProfesorFormulario, UserAvatarFormulario
 from .models import Alumno, Materia, Profesor, Avatar
-
+from django.contrib.auth.decorators import login_required
 
 def inicio_view (request):
     return render(request, "bioapp/inicio.html")
 
 
-def profesor_view(request):
-     if request.method == "GET":
-        profesor_formulario = ProfesorFormulario()
-        return render(
-            request,
-            "bioapp/profesor_formulario_avanzado.html",
-            context={"profesor_formulario": profesor_formulario})
-            
-     else:
-         profesor_formulario = ProfesorFormulario(request.POST)
-         
-         if profesor_formulario.is_valid():
-             data = profesor_formulario.cleaned_data
-             modelo = Profesor (nombre=data["nombre"], apellido=data["apellido"], materia=data["materia"]), 
-             modelo.save()
-         return redirect("bioapp:inicio")
-       
+   
        
 
 def alumno_crear_view(request):
@@ -225,4 +209,63 @@ def crear_avatar_view(request):
   
   
 def about_view (request):
-      return render (request, "bioapp/about.html")          
+      return render (request, "bioapp/about.html")         
+  
+  
+  
+@login_required
+def profesor_view(request):
+    if request.method == "GET":
+        return render(
+            request,
+            "bioapp/profesor_formulario_avanzado.html",
+            {"form": ProfesorFormulario()}
+        )
+    else:
+        formulario = ProfesorFormulario(request.POST)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            modelo = Profesor(
+                nombre=informacion["nombre"],
+                apellido=informacion["apellido"],
+                materia=informacion["materia"]
+            )
+            modelo.save()
+        return render(
+            request,
+            "bioapp/inicio.html",
+        )
+
+@login_required
+def profesores_crud_read_view(request):
+    profesor = Profesor.objects.all()
+    return render(request, "bioapp/profesor_lista.html", {"profesor": profesor})
+
+@login_required
+def profesores_crud_delete_view(request, profesor_materia):
+    profesor_a_eliminar = Profesor.objects.filter(materia=profesor_materia).first()
+    profesor_a_eliminar.delete()
+    return profesores_crud_read_view(request)
+
+
+@login_required
+def profesores_crud_update_view(request, profesor_materia):
+    profesor = Profesor.objects.filter(materia=profesor_materia).first()
+    if request.method == "GET":
+        formulario = ProfesorFormulario(
+            initial={
+                "nombre": profesor.nombre,
+                "apellido": profesor.apellido,
+                "materia": profesor.materia
+            }
+        )
+        return render(request, "bioapp/profesor_formulario_edicion.html", {"form": formulario, "profesor": profesor})
+    else:
+        formulario = ProfesorFormulario(request.POST)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            profesor.nombre=informacion["nombre"]
+            profesor.apellido=informacion["apellido"]
+            profesor.materia=informacion["materia"]
+            profesor.save()
+        return profesores_crud_read_view(request) 

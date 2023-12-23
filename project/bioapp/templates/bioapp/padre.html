@@ -41,12 +41,9 @@
           Buscar Alumnos
         </a>
         <a class="navbar-brand" href="{% url 'bioapp:materias' %}"> Materias</a>
-        <a class="navbar-brand" href="{% url 'bioapp:profesor' %}"
-          >Profesores</a
-        >
-        <a class="navbar-text" href="{% url 'bioapp:editar-perfil' %}"
-          >editar perfil: {{ user.username }}</a
-        >
+        <a class="navbar-brand" href="/bioapp/profesor/">Profesores</a>
+        <a class="navbar-brand" href="/bioapp/profesor-lista/">Todos los profesores</a>
+        <a class="navbar-text" href="{% url 'bioapp:editar-perfil' %}">editar perfil: {{ user.username }}</a>
         <a class="navbar-text" href="{% url 'bioapp:logout' %}">Logout</a>
         <a class="navbar-brand" href="{% url 'bioapp:login' %}">Login</a>
         <a class="navbar-brand" href="{% url 'bioapp:registro' %}"

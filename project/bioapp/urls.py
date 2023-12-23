@@ -28,6 +28,10 @@ from bioapp.views import (
     about_view,
     editar_perfil_view,
     crear_avatar_view,
+    profesores_crud_delete_view,
+    profesores_crud_read_view,
+    profesores_crud_update_view,
+    profesor_view
 )
 
 app_name= "bioapp"
@@ -35,7 +39,6 @@ app_name= "bioapp"
 
 urlpatterns = [
     path("alumno/crear/", alumno_crear_view, name="alumno_crear"),
-    path("profesor/", profesor_view, name= "profesor"),
     path("alumno/buscar/",alumno_buscar_view, name="alumno_buscar"),
     path("materias/", materias_view, name="materias"),
     path("inicio/", inicio_view, name="inicio"),
@@ -44,5 +47,9 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(template_name="bioapp/logout.html"), name="logout"),
     path("editar-perfil/", editar_perfil_view, name="editar-perfil"),
     path("crear-avatar/", crear_avatar_view, name="crear-avatar"),
-    path("about/", about_view, name= "about")
+    path("about/", about_view, name= "about"),
+    path("profesor/", profesor_view),
+    path("profesor-lista/", profesores_crud_read_view),
+    path("profesor-eliminar/<profesor_materia>/", profesores_crud_delete_view),
+    path("profesor-editar/<profesor_materia>/", profesores_crud_update_view),
 ]
