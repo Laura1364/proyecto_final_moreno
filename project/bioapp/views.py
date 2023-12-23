@@ -185,7 +185,7 @@ def editar_perfil_view(request):
         formulario = UserEditionFormulario(initial=valores_iniciales)
         return render(
             request,
-            "bioapp/editar_perfil.html",
+            "bioapp/editar-perfil.html",
             context={"form": formulario, "usuario": usuario, "avatar_url": avatar_url}
             )
     else:
@@ -221,6 +221,8 @@ def crear_avatar_view(request):
             modelo = Avatar(user=usuario, imagen=informacion["imagen"])
             modelo.save()
             breakpoint()
-            return redirect("bioapp:inicio")            
+        return redirect("bioapp:inicio")            
   
-            
+  
+def about_view (request):
+      return render (request, "bioapp/about.html")          

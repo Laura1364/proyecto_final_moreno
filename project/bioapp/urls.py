@@ -25,6 +25,7 @@ from bioapp.views import (
     materias_view,
     login_view,
     registro_view,
+    about_view,
     editar_perfil_view,
     crear_avatar_view,
 )
@@ -41,6 +42,7 @@ urlpatterns = [
     path("registro/", registro_view, name="registro"),
     path("login/", login_view, name="login"),
     path("logout/", LogoutView.as_view(template_name="bioapp/logout.html"), name="logout"),
-    path("editar-perfil", editar_perfil_view, name="editar-perfil"),
-    path("crear-avatar", crear_avatar_view, name="crear-avatar"),
+    path("editar-perfil/", editar_perfil_view, name="editar-perfil"),
+    path("crear-avatar/", crear_avatar_view, name="crear-avatar"),
+    path("about/", about_view, name= "about")
 ]
