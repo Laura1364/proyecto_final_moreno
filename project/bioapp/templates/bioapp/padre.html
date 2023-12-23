@@ -44,6 +44,17 @@
         <a class="navbar-brand" href="{% url 'bioapp:profesor' %}"
           >Profesores</a
         >
+        <a class="navbar-text" href="{% url 'bioapp:editar-perfil' %}"
+          >editar perfil: {{ user.username }}</a
+        >
+        <a class="navbar-text" href="{% url 'bioapp:logout' %}">Logout</a>
+        <a class="navbar-brand" href="{% url 'bioapp:login' %}">Login</a>
+        <a class="navbar-brand" href="{% url 'bioapp:registro' %}"
+          >Registrar usuario</a
+        >
+        <a class="navbar-text" href="{% url 'bioapp:crear-avatar' %}"
+          >crear avatar</a
+        >
       </div>
     </nav>
     <!-- Masthead-->

@@ -16,12 +16,17 @@ Including another URLconf
 """
 
 from django.urls import path
+from django.contrib.auth.views import LogoutView
 from bioapp.views import (
     inicio_view,
     profesor_view,
     alumno_crear_view,
     alumno_buscar_view,
-    materias_view
+    materias_view,
+    login_view,
+    registro_view,
+    editar_perfil_view,
+    crear_avatar_view,
 )
 
 app_name= "bioapp"
@@ -32,5 +37,10 @@ urlpatterns = [
     path("profesor/", profesor_view, name= "profesor"),
     path("alumno/buscar/",alumno_buscar_view, name="alumno_buscar"),
     path("materias/", materias_view, name="materias"),
-    path("inicio/", inicio_view, name="inicio")
+    path("inicio/", inicio_view, name="inicio"),
+    path("registro/", registro_view, name="registro"),
+    path("login/", login_view, name="login"),
+    path("logout/", LogoutView.as_view(template_name="bioapp/logout.html"), name="logout"),
+    path("editar-perfil", editar_perfil_view, name="editar-perfil"),
+    path("crear-avatar", crear_avatar_view, name="crear-avatar"),
 ]
