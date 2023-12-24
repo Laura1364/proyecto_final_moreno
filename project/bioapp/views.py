@@ -4,8 +4,14 @@ from .models import Alumno, Materia, Profesor, Avatar
 from django.contrib.auth.decorators import login_required
 
 def inicio_view (request):
-    return render(request, "bioapp/inicio.html")
+   if request.user.is_authenticated:
+        usuario = request.user
+        avatar = Avatar.objects.filter(user=usuario).last()
+        avatar_url = avatar.imagen.url if avatar is not None else ""
+   else:
+        avatar_url = ""
 
+   return render(request, "bioapp/inicio.html", context={"avatar_url": avatar_url})
 
    
        
@@ -211,7 +217,8 @@ def crear_avatar_view(request):
 def about_view (request):
       return render (request, "bioapp/about.html")         
   
-  
+def contenido_view (request):
+      return render (request, "bioapp/contenido.html")        
   
 @login_required
 def profesor_view(request):
